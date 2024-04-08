@@ -1,4 +1,3 @@
-```markdown
 # Restaurant Recommendation System Using Machine Learning
 
 ![Project Image](link/to/project/image.png)
