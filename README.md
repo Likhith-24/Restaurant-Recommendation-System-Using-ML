@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="link/to/project/image.png" alt="Project Image" width="400" height="300">
+  <img src="https://github.com/Likhith-24/Restaurant-Recommendation-System-Using-ML/blob/master/Website/rr/static/Restro%20Cropped.png?raw=true" alt="Project Image" width="400" height="300">
 </p>
 
 <h1 align="center">🍽️ Restaurant Recommendation System 🍔</h1>
