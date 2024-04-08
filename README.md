@@ -89,7 +89,7 @@ Please make sure to follow the [code of conduct](CODE_OF_CONDUCT.md).
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 <div align="center">
-  <img height="150" src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.uhdpaper.com%2F2020%2F10%2F81749-cyberpunk-2077-night-city-4k.html&psig=AOvVaw1A1snblS-Bc4wCzv80BG2U&ust=1712677106742000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCLiwqsb5soUDFQAAAAAdAAAAABAJ"  />
+  <img height="150" src="https://wallpapersmug.com/download/3840x2160/13377a/cyberpunk-city-buildings-art.jpg"  />
 </div>
 
 ###
