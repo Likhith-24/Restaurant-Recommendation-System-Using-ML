@@ -1,0 +1,161 @@
+.navbar a:hover{
+	transform: scale(1.1);
+}
+
+#navimg{
+	background-image: url('background.jpg');
+	height: 300px;
+	background-size: cover;
+	background-position: center;
+	position: relative;
+	
+}
+
+
+.search{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.logocard{
+	border-radius: 8px;
+}
+
+.logocard:hover{
+	transition: all 0.2s ease;
+	transform: scale(1.01);
+	border: 1px solid rgb(255, 255, 255);
+	cursor: pointer;
+	box-shadow: 0 0 15px 5px #ffffff;
+}
+
+.card{
+	border-radius: 8px;
+	overflow: hidden;
+}
+  
+.card:hover{
+	transition: all 0.2s ease;
+	transform: scale(1.01);
+	border: 1px solid grey;
+	cursor: pointer;
+	box-shadow: 0 0 15px 5px #A0A0A0;
+}
+  
+
+
+/* This is for the footer section */
+
+.footer__container{
+	width: 90%;
+	margin: 4rem auto;
+}
+
+.footer_section1{
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	margin: auto;
+	width: 70;
+}
+
+.footer_section1 img{
+	width: 130px;
+}
+
+.section1__button_container button{
+	padding: 7px;
+	border: 1px solid gray;
+	border-radius: 8px;
+	cursor: pointer;
+}
+
+.section1__button_container button:nth-child(2){
+	margin-left: 7px;
+}
+
+
+.navigation_container{
+	display: grid;
+	grid-template-columns : repeat(5, 1fr);
+	margin: auto;
+	gap: 1rem;
+	padding: 3rem 0;
+}
+
+.link_container{
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.link_container h5{
+	font-size: 16px;
+	font-weight: 500;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+}
+
+.link_container_anchors a{
+	display: flex;
+	flex-direction: column;
+	text-decoration: none;
+	text-transform: none;
+	color: gray;
+	gap: 5px;
+	font-weight: 400;
+	margin-bottom: 4px;
+}
+
+.link_container_anchors a:hover{
+	color: black;
+}
+
+.link_container h5[id=enterprises]{
+	margin-top: 10px;
+	letter-spacing: 1px;
+}
+
+.social_media_logos{
+	margin: 18px 30px;	
+}
+
+.social_media_logos img{
+	width: 80%;
+    margin-left: -28px;
+	cursor: pointer;
+}
+
+.social_media_logos img[id=img2]{
+	margin-top: 5px;
+}
+
+.social_media_icon_buttons button{
+	background: black;
+	border: none;
+	border-radius: 50%;
+	height: 22px;
+	width: 22px;
+	cursor: pointer;
+	color: white;
+}
+
+.social_media_icon_buttons button i{
+	display: flex;
+	font-size: 13px;
+	justify-content: center;
+	align-items: center;
+}
+
+.disclaimer{
+	font-size: 13px;
+    color: gray;
+    margin-top: auto;
+	border-top: 1px solid #C0C0C0;
+	padding-top: 20px;
+}
+
+

@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+
+{% block style %}
+
+{% endblock style %}
+{% comment %} {% block title %}
+search bar
+{% endblock title %} {% endcomment %}
+
+
+
+
+
+{% block body %}
+
+<h1>search result </h1>
+
+
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+    <li class="page-item disabled">
+        <a class="page-link" href="#" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item">
+      <a class="page-link" href="#" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+
+
+
+<div class="col-12">
+{% comment %} <table class="table table-responsive table-striped table-hover ">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">name</th>
+        <th scope="col">place</th>
+        <th scope="col">type</th>
+        <th scope="col">view</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for i in restaurant %}
+        <tr>
+          <th scope="row">{{i.rest_id}}</th>
+          <td>{{i.Name}}</td>
+          <td>{{i.City}}</td>
+          <td>{{i.Restaurant_Type}}</td>
+          <td>
+            <div class="card-footer text-center" method='post'>
+              <a href="{% url 'card' i.rest_id %}">
+                  <button type="button" id="{{ i.rest_id }}">Visit</button>
+                </a>
+            </div>
+          </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+  </table> {% endcomment %}
+  <div class="row row-cols-2">
+    {% for n in restaurant %}
+    
+  <div class=" card-deck  d-inline-block " id="card">
+    <div class="card  d-block  b border-dark border-5  p-3 m-2 bg-body rounded" >
+      <div class="card-body ">
+        <h5 class="card-title">{{n.Name}}</h5>
+        <p class="card-text">{{n.Restaurant_Type}}</p>
+        <p class="card-text">type: <b>{{n.Type}}</b></p>
+        <p class="card-text">Location: <b>{{n.City}}</b></p>
+        <p class="card-text">Cost: <b>{{n.Cost}}</b></p>
+      </div>
+      <div class="card-footer text-center" method='post'>
+        <a href="{% url 'card' n.rest_id %}">
+            <button type="button" id="{{ n.rest_id }}" class="btn btn-primary ">Visit</button>
+          </a>
+      </div>
+    </div>
+
+  </div>
+{% endfor %}
+
+</div>
+
+
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+    <li class="page-item disabled">
+        <a class="page-link" href="#" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item">
+      <a class="page-link" href="#" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+{% endblock body %}

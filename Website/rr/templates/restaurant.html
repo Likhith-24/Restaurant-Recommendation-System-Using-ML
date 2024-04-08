@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% comment %} {% block title %}recommender{% endblock title %} {% endcomment %}
+
+
+
+{% block body %}
+
+
+</br>
+</br>
+
+
+{% for n in restaurant %}
+<div class="card">
+    <div class=" p-5 border bg-light">
+        <h5 class="card-title ">Restaurant Name: {{n.Name}}</h5>
+        <p class="card-text">{{n.Restaurant_Type}}</p>
+        <p class="card-text">type: <b>{{n.Type}}</b></p>
+        <p class="card-text">Location: <b>{{n.City}}</b></p>
+        <p class="card-text">Cost: <b>{{n.Cost}}</b></p>
+    </div>
+    <div class= 'text-center m-1'>
+      
+      <a href="{% url 'cart' n.rest_id %}">
+        <button type="button" id="{{ n.rest_id }}" class="btn btn-primary ">add to cart</button>
+      </a>
+      
+    </div>
+
+  </div>
+{% endfor %}
+
+
+
+{% endblock body %}

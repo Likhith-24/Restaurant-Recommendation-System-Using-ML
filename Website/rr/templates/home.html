@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% comment %} {% block title %}Home{% endblock title %} {% endcomment %}
+{% block style %}
+<link href="{% static "styles.css" %}" rel="stylesheet">  
+{% endblock style %}
+
+
+
+{% block search %}
+        <div class=" row justify-content " id="navimg" >    
+            <div class="col-12 col-lg-3">
+              
+            </div>  
+            <div class="col-md-6 text-center" >
+              
+              <img src = "{% static "Restro Cropped.png" %}" alt = "Restro Logo" class="img-fluid logocard m mb-2 mt-2 "/>
+              <form method='get' action='/search' class="d-flex m mb-2 mt-2" role="search" >
+                  <input class="form-control b border-dark"  name="search" id='search' type="search" placeholder="Search" aria-label="Search" >
+                  <button class="btn btn-outline-dark ms-2" style="background-color : #ECBE5B;" type="submit">Search</button>
+              </form>
+            </div>
+        </div>
+        
+{% endblock search %}
+
+{% block body %}
+
+
+  
+
+</br>
+
+  
+  <form action="" method="post">
+      {% csrf_token %} 
+      <label for="Location">Location</label>
+      <div class="row row-cols-2">
+        <div class="col">
+          <input type="text" class="form-control" placeholder="{{location}}" name="Location" id="Location">
+        </div>
+        <div class="col">
+          <button type="submit" name="" id="Location" class="btn btn-primary" >Submit</button>
+        </div>
+        
+      </div>
+      
+  </form>
+      
+
+
+
+
+
+
+    </br>
+    <div class="text text-center text-bg-dark">
+    <h1>Restaurant List</h1>
+    </div>
+    </br>
+    <div class="row row-cols-2">
+    {% for n in restaurant %}
+    
+  <div class=" card-deck  d-inline-block " id="card">
+    <div class="card  d-block  b border-dark border-5  p-3 m-2 bg-body rounded" >
+      <div class="card-body ">
+        <h5 class="card-title">{{n.Name}}</h5>
+        <p class="card-text">{{n.Restaurant_Type}}</p>
+        <p class="card-text">type: <b>{{n.Type}}</b></p>
+        <p class="card-text">Location: <b>{{n.City}}</b></p>
+        <p class="card-text">Cost: <b>{{n.Cost}}</b></p>
+      </div>
+      <div class="card-footer text-center" method='post'>
+        <a href="{% url 'card' n.rest_id %}">
+            <button type="button" id="{{ n.rest_id }}" class="btn btn-primary ">Visit</button>
+          </a>
+      </div>
+    </div>
+
+  </div>
+{% endfor %}
+
+</div>
+  
+
+    
+{% endblock body %}
+

@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% comment %} {% block title %}Cart{% endblock title %} {% endcomment %}
+
+
+
+
+
+
+
+
+{% block body %}
+    
+</br>
+<div class="text text-center text-bg-dark">
+  <h1>Your cart</h1>
+</div>
+</br>
+
+    
+<div class="row row-cols-2">
+{% for n in restaurant %}
+<div class="card-deck d-inline-block " id="{{n.rest_id}}">
+  <div class="card m-2 ">
+    <div class="card-body m-2">
+      
+        <h5 class="card-title">{{n.Name}}</h5>
+        <p class="card-text">{{n.Restaurant_Type}}</p>
+        <p class="card-text">type: <b>{{n.Type}}</b></p>
+        <p class="card-text">Location: <b>{{n.City}}</b></p>
+        <p class="card-text">Cost: <b>{{n.Cost}}</b></p>
+        <form action="/placeorder/{{n.rest_id}}/" method='POST'>
+          {% csrf_token %}
+          <label for="date">select date:</lable>
+          <input type="date" name='date' required>
+          <footer class="mt-3">
+            <button type="submit m-2" class="btn btn-primary text-center" >place order</button>
+            <a  class="text-end m-2" href="/payment/{{n.order_id}}" >
+              <button  type="button" class="btn btn-primary m-1">payment</button>
+            </a>
+          </footer>
+        </form>
+    </div>
+    
+    
+    
+    
+  </div>
+</br>
+</div>
+{% endfor %}
+
+</div>
+
+    
+{% endblock body %}
+
+{% block right %}
+<a href="/clear">
+    <button type="button" class="btn btn-primary ">clear</button>
+</a>
+{% endblock right %}

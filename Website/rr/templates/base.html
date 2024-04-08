@@ -1,0 +1,357 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title> {% block title %}{% endblock title %} Restro</title>
+        <link src= "{% static 'logo.png' %}" rel="icon"  >
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+      <style>{% block style %}{% endblock style %}</style>
+      <link href="{% static "styles.css" %}" rel="stylesheet">  
+
+      <link 
+		rel = "icon"
+		href = "{% static "logo.png" %}"; 
+		/>
+
+    </head>
+  <body>
+    
+    
+  <nav class="navbar navbar-expand-lg  border border-dark" >
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <a class="navbar-brand" href="{% url "recommend" %}">
+            <img src="{% static 'logo.png' %}" alt="logo" width="40" height="40" >
+            Restaurant Recommender
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="collapse navbar-collapse " id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
+            <li class="nav-item">
+              <a class="nav-link active"  aria-current="page" href="/home">Home</a>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    {{user}}
+              </a>
+              <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">{{user.email}}</a></li>
+                    <li><a class="dropdown-item" href="/order">Placed Orders</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
+              </ul>
+              
+                
+            </li>
+            <li>
+              <a class="nav-link active"  href="/carthome" >
+                <img src="{% static 'cart.png' %}" alt="logo" width="10" height="10">
+                Cart
+              </a>
+            </li>
+
+                {% if user.name == AnonymousUser %}
+                  <li class="nav-item " >
+                    
+                    <a class="nav-link active" aria-current="page" href="{% url 'login' %}">login</a>
+                    
+                  </li>
+                {% endif %}
+                
+           
+          </ul>
+        </div>
+        </div>
+      </div>
+        
+            
+        
+
+    </div>
+  </nav>
+
+
+    <div class="container-fluid">
+
+      {% block search %}
+      <div class="row justify-content  " >    
+        <div class="col-12 col-lg-3">
+          
+        </div>  
+        <div class="col-md-6 text-center" >
+          
+              <form method='get' action='/search' class="d-flex m mb-2 mt-2" role="search" >
+                <input class="form-control b border-dark"  name="search" id='search' type="search" placeholder="Search" aria-label="Search" >
+                <button class="btn btn-outline-dark ms-2" style="background-color : #ECBE5B;" type="submit">Search</button>
+            </form>
+         
+        </div>
+    </div>
+      {% endblock search %}
+      
+        <div class="row justify-content" style="background-color:  rgb(255, 255, 255);">
+
+          <div class=" col-12 col-lg-2" style="background-color: rgb(255, 255, 255);" >
+            <p></p>
+            {% block left %}
+            <div class="card b border-dark border-2 p-2 m-1" style="background-color: #e3f2fd;">
+              <div>
+                <h5>offer</h5>
+                <h6>50% off</h6>
+                <p>for min order of just 40k rupees</p>
+                
+              </div>
+            </div>
+
+            <div class="card b border-dark border-2 p-2 m-1" style="background-color: #e3f2fd;">
+              <div>
+                <h5>offer</h5>
+                <h6>25% off</h6>
+                <p>for min order of just 20k rupees</p>
+                
+              </div>
+            </div>
+            
+            
+            {% endblock left %}
+          </div>
+            
+             <div class="col-12 col-lg-8  " style="background-color: #E5EEF0; ">   
+                {% block body %}
+                
+                
+                {% endblock body %}
+                
+             </div>
+
+             <div class=" col-12 col-lg-2" style="background-color: rgb(255, 255, 255);" >
+              <p></p>
+              {% block right %}{% endblock right %}
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="row-cols-auto"  style="background-color: rgb(255, 255, 255);" >
+      <br>
+    </div>
+    
+    <!-- This is for footer section -->
+    {% comment %} <div class = "container-">
+		<footer class = "py-5">
+			<div class = "footer_section1">
+				<img src = "{% static "LOGO Restro.png" %}" alt = "Restro logo" />
+				<div class = "section1__button_container">
+					<button>
+						<img src = "{% static "IndianFlag.png" %}" alt = "Indian Flag" style = "width: 16px; height: 16px" />
+						<select style = "border: none; background: #f0f0f0; cursor: pointer">
+							<option>India</option>
+							<option>United States</option>
+							<option>Australia</option>
+							<option>New Zealand</option>
+							<option>Spain</option>
+							<option>England</option>
+						</select>
+					</button>
+					<button>
+						<i class = "fa fa-globe"></i>
+						<select style = "border: none; background: #f0f0f0; cursor: pointer">
+							<option>English</option>
+							<option>Español</option>
+							<option>Čeština</option>
+							<option>Slovenčina</option>
+							<option>Polish</option>
+							<option>Italian</option>
+						</select>
+					</button>
+				</div>
+			</div>
+			<div class = "navigation_container">
+				<div class = "link_container">
+					<h5>About Restro</h5>
+					<div class = "link_container_anchors">
+						<a href = "#">Who We Are</a>
+						<a href = "#">Blog</a>
+						<a href = "#">Work With Us</a>
+						<a href = "#">Investor Relations</a>
+						<a href = "#">Report Fraud</a>
+						<a href = "#">Contact Us</a>
+					</div>
+				</div>
+				
+				<div class = "link_container">
+					<h5>Restroverse</h5>
+					<div class = "link_container_anchors">
+						<a href = "#">BlackRock</a>
+						<a href = "#">BlackStone</a>
+						<a href = "#">Feed The World</a>
+						<a href = "#">Hyperpure</a>
+						<a href = "#">RestroWorld</a>
+					</div>
+				</div>
+				
+				<div class = "link_container">
+					<h5>For Restaurants</h5>
+					<div class = "link_container_anchors">
+						<a href = "#">Partner With Us</a>
+						<a href = "#">Apps For You</a>
+					</div>
+					<h5 id = "enterprises">For Organizations</h5>
+					<div class = "link_container_anchors">
+						<a href = "#">Restro On Field</a>
+					</div>
+				</div>
+				
+				<div class = "link_container">
+					<h5>Learn More</h5>
+					<div class = "link_container_anchors">
+						<a href = "#">Privacy</a>
+						<a href = "#">Security</a>
+						<a href = "#">Terms</a>
+						<a href = "#">Sitemap</a>
+					</div>
+				</div>
+				
+				<div class = "link_container">
+					<h5>Social Links</h5>
+					<div class = "social_media_icon_buttons">
+						<button><i class="fa-brands fa-linkedin-in"></i>	</button>
+						<button><i class = "fa-brands fa-instagram"></i></button>
+						<button><i class = "fa-brands fa-twitter"></i></button>
+						<button><i class = "fa-brands fa-facebook"></i></button>
+						<button><i class = "fa-brands fa-youtube"></i></button>
+						<div class = "social_media_logos">
+							<img src = "{% static "appleStore.png" %}" alt = "Apple store" />
+							<img src = "{% static "playStore.png" %}" alt = "Play store" id = "img2"/>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class = "disclaimer">
+			By continuing past this page, you agree to our Terms of Service, Cookie Policy,
+			Privacy Policy and Content Policies. All trademarks are properties of their respective owners.
+			2023-2099 © Restro™ Ltd. All rights reserved.
+			</div>
+		</footer>
+  </div> {% endcomment %}
+  <footer class="bd-footer py-4 py-md-5 mt-5 bg-body-tertiary">
+    <div class="container py-4 py-md-5 px-4 px-md-3 text-body-secondary">
+      <div class="row">
+        <div class="col-6 col-lg-3 mb-3">
+          <a class="d-inline-flex align-items-center mb-2 text-body-emphasis text-decoration-none" href="/" aria-label="Bootstrap">
+            <img src = "{% static "LOGO Restro.png" %}" alt = "Restro logo" width="200" height="180" class="d-block me-2"/>
+          </a>
+        </div>
+        <div class="col-6 col-lg-3 mb-3">
+          <div class = "col-6 col-lg-3">
+            <button class="d-inline-flex mb-2">
+              <img src = "{% static "IndianFlag.png" %}" alt = "Indian Flag" style = "width: 20px; height: 16px" >
+              <select style = "border: none; background: #f0f0f0; cursor: pointer">
+                <option>India</option>
+                <option>United States</option>
+                <option>Australia</option>
+                <option>New Zealand</option>
+                <option>Spain</option>
+                <option>England</option>
+              </select>
+            </button> 
+            <br>
+          </div>
+      
+          <div class = "col-6 col-lg-3">
+            <button >
+              <i class = "fa fa-globe"></i>
+              <select style = "border: none; background: #f0f0f0; cursor: pointer">
+                <option>English</option>
+                <option>Español</option>
+                <option>Čeština</option>
+                <option>Slovenčina</option>
+                <option>Polish</option>
+                <option>Italian</option>
+              </select>
+            </button>
+          </div>
+        </div>
+        <ul class="list-unstyled small">
+          <li class="mb-2">By continuing past this page, you agree to our Terms of Service, Cookie Policy,
+            Privacy Policy and Content Policies. All trademarks are properties of their respective owners.
+            2023-2099 © Restro™ Ltd. All rights reserved.
+          </li>
+          
+        </ul>
+        <div class="col-6 col-lg-2 offset-lg-1 mb-3">
+              <h5>About Restro</h5>
+              <div class = "link_container_anchors">
+                <a href = "#">Who We Are<br></a>
+                <a href = "#">Blog<br></a>
+                <a href = "#">Work With Us</a>
+                <a href = "#">Investor Relations</a>
+                <a href = "#">Report Fraud</a>
+                <a href = "#">Contact Us</a>
+              </div>
+        </div>
+        <div class="col-6 col-lg-2 mb-3">
+          <h5>Restroverse</h5>
+					<div class = "link_container_anchors">
+						<a href = "#">BlackRock</a>
+						<a href = "#">BlackStone</a>
+						<a href = "#">Feed The World</a>
+						<a href = "#">Hyperpure</a>
+						<a href = "#">RestroWorld</a>
+					</div>
+        </div>
+        <div class="col-6 col-lg-2 mb-3">
+          <h5>For Restaurants</h5>
+					<div class = "link_container_anchors">
+						<a href = "#">Partner With Us</a>
+						<a href = "#">Apps For You</a>
+					</div>
+        </div>
+        <div class = "col-6 col-lg-2 mb-3 link_container_anchors">
+          <h5>For Companies</h5>
+          <a href = "#">Restro On Field</a>
+        </div>
+        <div class="col-6 col-lg-2 mb-3">
+          <h5>Learn More</h5>
+					<div class = "link_container_anchors">
+						<a href = "#">Privacy</a>
+						<a href = "#">Security</a>
+						<a href = "#">Terms</a>
+						<a href = "#">Sitemap</a>
+					</div>
+        </div>
+        <div class = "link_container">
+					<h5>Social Links</h5>
+					<div class = "social_media_icon_buttons">
+						<button><i class="fa-brands fa-linkedin-in"></i>	</button>
+						<button><i class = "fa-brands fa-instagram"></i></button>
+						<button><i class = "fa-brands fa-twitter"></i></button>
+						<button><i class = "fa-brands fa-facebook"></i></button>
+						<button><i class = "fa-brands fa-youtube"></i></button>
+						<div class = "social_media_logos">
+              <a>
+							  <img src = "{% static "appleStore.png" %}" alt = "Apple store" href="#" style = "width: 20px; height: 16px"/>
+              </a>
+							<img src = "{% static "playStore.png" %}" alt = "Play store" id = "img2" />
+						</div>
+					</div>
+				</div>
+      </div>
+    </div>
+  </footer>
+
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  </body>
+</html>

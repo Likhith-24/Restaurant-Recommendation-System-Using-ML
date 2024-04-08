@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% comment %} {% block title %}place order page{% endblock title %} {% endcomment %}
+
+{% block style %}
+
+.card{
+  transition : transform .3s;
+  margin: 2em;
+}
+
+.card:hover{
+  transform: scale(1.05);
+}
+
+
+{% endblock style %}
+{% block body %}
+</br>
+<div class="text text-center text-bg-dark">
+<h1>Order Placed</h1>
+</div>
+</br>
+<div class="row row-cols-2">
+{% for n in restaurant %}
+<div class="card-deck" id="{{n.order_id}">
+  <div class="card">
+    <div class="card-body ">
+        <h5 class="card-title">{{n.Name}}</h5>
+        <p class="card-text">{{n.Restaurant_Type}}</p>
+        
+        <p class="card-text">Location: <b>{{n.City}}</b></p>
+        <p class="card-text">Cost: <b>{{n.Cost}}</b></p>
+        <p class="card-text">Date: <b>{{n.order_date}}</b></p>
+        <a  class="text-start d-inline" href="/removeorder/{{n.order_id}}" >
+          <button  type="button" class="btn btn-primary m-1">clear</button>
+          
+        </a>
+        
+    </div>
+    
+  </div>
+</br>
+</div>
+{% endfor %}
+</div>
+
+{% endblock body %}
