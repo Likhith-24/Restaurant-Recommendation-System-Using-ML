@@ -71,6 +71,9 @@ python main.py
 
 4. **Explore and interact with the recommendations based on your preferences.**
 
+## Contributors 🙌
+- [@Anvesh190902](https://github.com/Anvesh190902)
+
 ## 🤝 Contributing
 
 Contributions are welcome! If you would like to contribute to this project, please follow these steps:
